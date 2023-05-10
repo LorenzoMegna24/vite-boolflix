@@ -2,11 +2,13 @@
   import axios from 'axios';
   import { store } from './store'
   import HeaderComp from './components/HeaderComp.vue';
+  import ResultsComp from './components/ResultsComp.vue'
 
   export default{
     name: 'App',
     components: {
       HeaderComp,
+      ResultsComp,
     },
     data(){
       return{
@@ -31,6 +33,7 @@
 
 <template>
   <HeaderComp @callApi="cercaFilm()"/>
+  <ResultsComp/>
 </template>
 
 <style lang="scss">
