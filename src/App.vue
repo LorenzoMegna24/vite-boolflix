@@ -24,7 +24,9 @@
     methods:{
       cercaFilm(){
         axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${store.apiKey}&query=${store.ricercaTitolo}`).then( (res)=>{
+          console.log(res.data.results);
           store.arrayRisultati = res.data.results
+          
         })
       }
     }

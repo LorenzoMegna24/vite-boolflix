@@ -1,8 +1,20 @@
 <script>
   export default{
     name: 'CardComp',
-    props: ['infoFilm']
+    props: ['infoFilm'],
+    data(){
+      return{
+        stato: '',
+        imgBandiera: 'https://flagsapi.com/state/flat/64.png'
+      }
+    },
+  methods:{
+    bandiera(infoFilm){
+       return this.imgBandiera.replace('state', infoFilm.original_language.toUpperCase());
+      }
   }
+  }
+  
 
 
 </script>
@@ -15,6 +27,9 @@
     <div class="card-body">
       <h5 class="card-title">{{ infoFilm.original_title }}</h5>
       <p class="card-text">{{ infoFilm.overview }}</p>
+      <div>
+        <img :src="bandiera(infoFilm)" :alt="infoFilm.original_language">
+      </div>
     </div>
   </div>
 </div>
