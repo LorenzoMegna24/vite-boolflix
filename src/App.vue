@@ -23,10 +23,13 @@
     },
     methods:{
       cercaFilm(){
-        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${store.apiKey}&query=${store.ricercaTitolo}`).then( (res)=>{
+        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${store.apiKey}&language=it_IT&query=${store.ricercaTitolo}`).then( (res)=>{
           console.log(res.data.results);
-          store.arrayRisultati = res.data.results
-          
+          store.arrayFilm = res.data.results;
+          axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${store.apiKey}&language=it_IT&query=${store.ricercaTitolo}`).then((res)=>{
+            console.log(res.data.results);
+            store.arraySeries = res.data.results
+          })
         })
       }
     }

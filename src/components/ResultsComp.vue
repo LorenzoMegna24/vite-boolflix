@@ -21,7 +21,8 @@
 
   <div class="container mt-5">
     <div class="row">
-      <CardComp  v-for="(element, index) in store.arrayRisultati" :key="index" :infoFilm="element"/>
+      <CardComp  v-for="(element, index) in store.arrayFilm" :key="index" :infoFilm="element"/>
+      <CardComp v-for="(element, index) in store.arraySeries" :key="index" :infoSerie="element"/>
     </div>
   </div>
 
