@@ -1,6 +1,13 @@
 <script >
+  import { store } from '../store'
   export default{
-    name: 'HeaderComp'
+    name: 'HeaderComp',
+    data(){
+      return{
+        store
+      }
+    }
+
   }
 </script>
 
@@ -8,8 +15,9 @@
   <div class="bg-black p-3 d-flex align-items-center justify-content-between">
     <h1 class="text-danger me-5">BOOLFLIX</h1>
     <div class="input-group w-50">
-      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-      <button class="input-group-text" id="inputGroup-sizing-default">Search</button>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" 
+      v-model="store.ricercaTitolo">
+      <button class="input-group-text" id="inputGroup-sizing-default" @click="$emit('callApi')">Search</button>
     </div>
   </div>
 </template>
