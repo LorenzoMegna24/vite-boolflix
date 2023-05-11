@@ -24,6 +24,13 @@
       }else {
         return this.info.original_name
       }
+    },
+    thumb(){
+      if (this.info.poster_path) {
+        return `https://image.tmdb.org/t/p/w500/${this.info.poster_path}`
+      }else if (this.info.poster_path == null) {
+        return '/img/errore-404.jpg'
+      }
     }
   }
   }
@@ -36,7 +43,7 @@
 
 <div class="col-12 col-md-6 col-lg-3 mb-5">
   <div class="card">
-    <img src="..." class="card-img-top" :alt="titolo()">
+    <img :src="thumb()" class="card-img-top" :alt="titolo()">
     <div class="card-body">
       <h5 class="card-title">{{ titolo() }}</h5>
       <p class="card-text">{{ info.overview }}</p>
