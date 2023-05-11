@@ -1,17 +1,30 @@
 <script>
   export default{
     name: 'CardComp',
-    props: ['infoFilm'],
+    props: ['info'],
     data(){
       return{
-        stato: '',
         imgBandiera: 'https://flagsapi.com/state/flat/64.png'
       }
     },
   methods:{
-    bandiera(infoFilm){
-       return this.imgBandiera.replace('state', infoFilm.original_language.toUpperCase());
+    bandiera(info){
+       
+       if (this.info.original_language == 'en') {
+        this.info.original_language = 'gb'
+        return this.imgBandiera.replace('state', this.info.original_language.toUpperCase());
+       }else{
+        return this.imgBandiera.replace('state', this.info.original_language.toUpperCase());
+       }
+      },
+
+    titolo(){
+      if(this.info.original_title){
+        return this.info.original_title
+      }else {
+        return this.info.original_name
       }
+    }
   }
   }
   
@@ -23,12 +36,12 @@
 
 <div class="col-12 col-md-6 col-lg-3 mb-5">
   <div class="card">
-    <img src="..." class="card-img-top" :alt="infoFilm.original_title">
+    <img src="..." class="card-img-top" :alt="titolo()">
     <div class="card-body">
-      <h5 class="card-title">{{ infoFilm.original_title }}</h5>
-      <p class="card-text">{{ infoFilm.overview }}</p>
+      <h5 class="card-title">{{ titolo() }}</h5>
+      <p class="card-text">{{ info.overview }}</p>
       <div>
-        <img :src="bandiera(infoFilm)" :alt="infoFilm.original_language">
+        <img :src="bandiera(info)" :alt="info.original_language">
       </div>
     </div>
   </div>
