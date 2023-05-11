@@ -37,8 +37,10 @@
 </script>
 
 <template>
-  <HeaderComp @callApi="cercaFilm()"/>
-  <ResultsComp/>
+  <div class="vh-100">
+    <HeaderComp @callApi="cercaFilm()"/>
+    <ResultsComp/>
+  </div>
 </template>
 
 <style lang="scss">
